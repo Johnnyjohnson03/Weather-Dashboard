@@ -12,9 +12,7 @@ const app = {
     let lat = document.getElementById('latitude').value;
     let lon = document.getElementById('longitude').value;
     let key = '2d498e008549c3183eeba1f30ba5afd6';
-    let lang = 'en';
-    let units = 'metric';
-    let url = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}';
+    let url = 'http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={key}';
     //fetch the weather
     fetch(url)
       .then((resp) => {
@@ -58,7 +56,9 @@ const app = {
             let ss = new Date(day.sunset * 1000).toTimeString();
             return '<div class="col">
                 <div class="card">
-                <h5 class
+                <><h5 class="card-title p2">${dt.toDateString()}</h5>
+                  <img
+                    src="" /></>
             
             ' 
         }
