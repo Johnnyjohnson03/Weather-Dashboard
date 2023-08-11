@@ -24,7 +24,7 @@ let getWeather = (city) => {
 
 // GET 5-DAY FORECAST + UV DATA
 let getForecast = (city) => {
-  let apiURL3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=6bfc6a73d8f9ae1647ed485480f416f5";
+  let apiURL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=6bfc6a73d8f9ae1647ed485480f416f5";
   fetch(apiURL3)
     .then((response) => {
       response.json()
@@ -36,7 +36,7 @@ let getForecast = (city) => {
           let lon = data.city.coord.lon;
           // GET UV DATA BASED ON CITY LAT/LON COORDINATES
           let getTodayUV = (city) => {
-            let apiURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=6bfc6a73d8f9ae1647ed485480f416f5";
+            let apiURL2 = "https:///api.openweathermap.org/data/2.5/uvi?lat="+lat + "&lon=" + lon + "&appid=6bfc6a73d8f9ae1647ed485480f416f5";
             fetch(apiURL2)
               .then((response) => {
                 response.json()
@@ -123,7 +123,7 @@ let showWeather = (weather, searchQuery) => {
   cityEl.textContent = searchQuery;
   iconEl = weather.weather[0].icon;
   document.getElementById("todayIcon")
-    .src = "./assets/css/icons/" + iconEl + ".png"; // changeout icon set in future, here and forecast
+    .src = "https./assets/css/icons/" + iconEl + ".png"; // changeout icon set in future, here and forecast
   document.getElementById("todayTemp")
     .innerHTML = weather.main.temp;
   document.getElementById("todayHumidity")
