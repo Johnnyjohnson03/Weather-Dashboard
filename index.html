@@ -1,115 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/main.css" />
-  </head>
-  <body>
-    <div>
-      <header class="container">
-        <h1>Weather Dashboard</h1>
-      </header>
-      <nav class="container">
-        <div class="row align-items-center py-2">
-          <div class="input-group col-sm">
-            <span class="input-group-text" id="basic-addon1">Lat</span>
-            <input
-              type="text"
-              class="form-control"
-              inputmode="numeric"
-              id="latitude"
-              placeholder="latitude"
-              aria-label="latitude"
-              aria-describedby="basic-addon1"
-              value="42.98"
-            />
-          </div>
-          <div class="input-group col-sm">
-            <span class="input-group-text" id="basic-addon1">Lon</span>
-            <input
-              type="text"
-              class="form-control"
-              inputmode="numeric"
-              id="longitude"
-              placeholder="longitude"
-              aria-label="longitude"
-              aria-describedby="basic-addon1"
-              value="-81.23"
-            />
-          </div>
-        </div>
-        <div class="row align-items-center py-2">
-          <div class="col-auto me-auto">
-            <button id="btnGet" type="button" class="btn btn-primary mb-3">
-              Get Weather
-            </button>
-            <button id="btnCurrent" type="button" class="btn btn-primary mb-3">
-              Use Current Location
-            </button>
-          </div>
-        </div>
+<html>
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <link rel="stylesheet" href="://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
+   <script src="://kit.fontawesome.com/6ff971e226.js" crossorigin="anonymous"></script>
+   <style>
+   @import url("://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+   </style>
+   <meta name="description" content="Weather application made for UCB's bootcamp with Open Weather API." />
+   <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <link rel="shortcut icon" href="./assets/images/wind.png">
+   <title> Weather Application </title>
+</head>
+
+<body>
+   <div class="wrapper">
+      <!--Nav Header-->
+      <nav class="navbar">
+         <h1 class="display-4">Weather Dashboard</h1>
       </nav>
-      <main class="container">
-        <h2>Weather</h2>
-        <!-- results for weather data -->
-        <div class="weather row gx-2">
-          <div class="col">
-            <div class="card" style="width: 30vw">
-              <h5 class="card-title p-2">Date</h5>
-              <img
-                src="http://openweathermap.org/img/wn/10d@4x.png"
-                class="card-img-top"
-                alt="Weather description"
-              />
-              <div class="card-body">
-                <h3 class="card-title">Weather Label</h3>
-                <p class="card-text">High Temp Low Temp</p>
-                <p class="card-text">Wind speed</p>
-              </div>
+      <!--Main Container Start-->
+      <main class="container-fluid">
+         <div class="row" >
+            <!--Left Rail-->
+            <div class="col-sm-2 card card-search">
+               <h5>Enter the city to get Weather </h5>
+               <!--Search Form-->
+               <div class="input-group" style="width:1200px">
+                  <form id="formCity">
+                     <input name="city" id="city" type="text" autofocus="true" placeholder="Search your city" class="form-input" style="width:1000px" />
+                     <button type="submit" class="btn-success" style:"margin-right:5px"> Search <i class="fas fa-search"></i></button>
+                  </form>
+               </div>
+               <!--Past City Search Buttons -->
+               <div class="btn-group-vertical" id="buttons"></div>
             </div>
-          </div>
-        </div>
-      </main>
-      <footer class="container">
-        <div class="row align-items-center">
-          <div class="col">
-            <img
-              src="http://openweathermap.org/img/wn/10d.png"
-              alt="demo icon"
-            />
-            <span>10d.png</span>
-          </div>
-          <div class="col">
-            <img
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt="demo icon"
-            />
-            <span>10d@2x.png</span>
-          </div>
-          <div class="col">
-            <img
-              src="http://openweathermap.org/img/wn/10d@4x.png"
-              alt="demo icon"
-            />
-            <span>10d@4x.png</span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/app.js" defer></script>
-  </body>
+            <!--End Left Rail-->
+            <!--Central Content Area-->
+            <!--Today's Weather-->
+            
+            <div class="col-sm-9" id="weather-today" style="text-align:center;margin-left:20%"><br><br>
+               <h3 style="margin-right:30%">Today's Weather</h3>
+               <div class="row">
+                  <div class="col-sm-9">
+                     <div class="card todayBlock">
+                        <h5> <span id="searchedCity"></span></h5>
+                        <h6><span id="todayDate"></span></h6>
+                        <img id="todayIcon" src="" style="margin-left:45%;">
+                        <p><strong>Temperature: </strong><span id="todayTemp"></span> °F</p>
+                        <p><strong>Humidity: </strong><span id="todayHumidity"></span>%</p>
+                        <p><strong>Wind Speed: </strong><span id="todayWind"></span> mph</p>
+                        <p><strong>UV Index: </strong><span id="todayUV"></span></p>
+                     </div>
+                  </div>
+               </div>
+               <!--End Today's Weather Section-->
+               <!--Forecast 5 Day Section-->
+               <div class="container" id="forecast5day" style="text-align:center;margin-left:1%"><br><br>
+                  <h3 style="margin-right:30%">5-Day Forecast</h3>
+                  <div class="row">
+                     <!--Day 1-->
+                     <div class="col-sm-2">
+                        <div class="card card5day">
+                           <h6 id="day1"></h6>
+                           <img id="i1" src="" style="margin-left:20%">
+                           <p><strong>Temp:</strong> <span id="t1"></span> °F</p>
+                           <p><strong>Humidity:</strong> <span id="h1"></span>%</p>
+                        </div>
+                     </div>
+                     <!--Day 2-->
+                     <div class="col-sm-2">
+                        <div class="card card5day">
+                           <h6 id="day2"></h6>
+                           <img id="i2" src="" style="margin-left:20%">
+                           <p><strong>Temp:</strong> <span id="t2"></span> °F</p>
+                           <p><strong>Humidity:</strong> <span id="h2"></span>%</p>
+                        </div>
+                     </div>
+                     <!--Day 3-->
+                     <div class="col-sm-2">
+                        <div class="card card5day">
+                           <h6 id="day3"></h6>
+                           <img id="i3" src="" style="margin-left:20%">
+                           <p><strong>Temp:</strong> <span id="t3"></span> °F</p>
+                           <p><strong>Humidity:</strong> <span id="h3"></span>%</p>
+                        </div>
+                     </div>
+                     <!--Day 4-->
+                     <div class="col-sm-2">
+                        <div class="card card5day">
+                           <h6 id="day4"></h6>
+                           <img id="i4" src="" style="margin-left:20%">
+                           <p><strong>Temp: </strong><span id="t4"></span> °F</p>
+                           <p><strong>Humidity:</strong> <span id="h4"></span>%</p>
+                        </div>
+                     </div>
+                     <!--Day 5-->
+                     <div class="col-sm-2">
+                        <div class="card card5day">
+                           <h6 id="day5"></h6>
+                           <img id="i5" src="" style="margin-left:20%">
+                           <p><strong>Temp:</strong> <span id="t5"></span> °F</p>
+                           <p><strong>Humidity:</strong> <span id="h5"></span>%</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!--End 5 day Container -->
+            </div>
+            <!--End Center Container -->
+         </div>
+         <!--Scripts: Moment, jQuery, JS-->
+         <script src="://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+         <script src="://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+         <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
